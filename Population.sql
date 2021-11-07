@@ -52,7 +52,7 @@ WHERE
 
 
 -- For Visualization in Tableau.
---Table 1 - Yearly Total Population in Every Country (2011 - 2020)
+--1.1 Table 1 - Yearly Total Population in Every Country (2011 - 2020)
 SELECT SUM(TotalPopulation2011) AS TotalPopulation2011, SUM(TotalPopulation2012) AS TotalPopulation2012, SUM(TotalPopulation2013) AS TotalPopulation2013, SUM(TotalPopulation2014) AS TotalPopulation2014, SUM(TotalPopulation2015) AS TotalPopulation2015, SUM(TotalPopulation2016) AS TotalPopulation2016, SUM(TotalPopulation2017) AS TotalPopulation2017, SUM(TotalPopulation2018) AS TotalPopulation2018, SUM(TotalPopulation2019) AS TotalPopulation2019, SUM(TotalPopulation2020) AS TotalPopulation2020
 FROM 
     PortfolioProject..Population$
@@ -60,7 +60,7 @@ WHERE
   CountryName NOT IN ('Africa Eastern and Southern', 'Africa Western and Central', 'Arab World', 'East Asia & Pacific', 'Europe & Central Asia', 'Latin America & Caribbean', 'Middle East & North Africa', 'North America', 'South Asia', 'Sub-Saharan Africa', 'World')
 
 
---2.1 Table 2 - Yearly Total Female Population Percentage (2011 - 2020)
+--1.2 Table 1 - Yearly Total Female Population Percentage (2011 - 2020)
 --Did not multiply to 100 as the percentage format in tableau automatically formats it to a percentage(x.x%)
 --To apply a percentage format to your SQL query use "FORMAT(SUM(F.TotalMalePopulation2011)/SUM(P.TotalPopulation2011, 'P') AS TotalPercentMalePopulation2011" which will yeald a result of 49.56% instead of 0.495597581905219
 SELECT SUM(F.TotalFemalePopulation2011)/SUM(P.TotalPopulation2011) AS TotalPercentFemalePopulation2011, 
@@ -79,7 +79,7 @@ JOIN PortfolioProject..TotalFemalePopulation$ AS F
 WHERE
   P.CountryName NOT IN ('Africa Eastern and Southern', 'Africa Western and Central', 'Arab World', 'East Asia & Pacific', 'Europe & Central Asia', 'Latin America & Caribbean', 'Middle East & North Africa', 'North America', 'South Asia', 'Sub-Saharan Africa', 'World')
 
---2.2 Table 2 - Yearly Total Male Population Percentage (2011 - 2020)
+--1.3 Table 1 - Yearly Total Male Population Percentage (2011 - 2020)
 --Did not multiply to 100 as the percentage format in tableau automatically formats it to a percentage(x.x%)
 --To apply a percentage format to your query in SQL use "FORMAT(SUM(F.TotalMalePopulation2011)/SUM(P.TotalPopulation2011, 'P') AS TotalPercentMalePopulation2011" which will yeald a result of 50.40% instead of 0.504003827635905
 
@@ -100,7 +100,7 @@ WHERE
   P.CountryName NOT IN ('Africa Eastern and Southern', 'Africa Western and Central', 'Arab World', 'East Asia & Pacific', 'Europe & Central Asia', 'Latin America & Caribbean', 'Middle East & North Africa', 'North America', 'South Asia', 'Sub-Saharan Africa', 'World')
 
 
---3. Table 3 - Yearly Female Population Percentage in Every Country (2011 - 2020)
+--2.1 Table 2 - Yearly Female Population Percentage in Every Country (2011 - 2020)
 SELECT P.CountryName, P.TotalPopulation2011/F.TotalFemalePopulation2011 AS PercentFemalePopulation2011, P.TotalPopulation2012/F.TotalFemalePopulation2012 AS PercentFemalePopulation2012,
   P.TotalPopulation2013/F.TotalFemalePopulation2013 AS PercentFemalePopulation2013, 
   P.TotalPopulation2014/F.TotalFemalePopulation2014 AS PercentFemalePopulation2014, 
